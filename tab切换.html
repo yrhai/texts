@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{
+      padding:0 margin:0;
+    }
+    ul{
+      list-style: none;
+    }
+    .btns button{
+      padding:5px 10px;
+      margin:0 10px;
+    }
+    .cotents{
+      width:300px;
+      height:300px;
+      border:1px solid #ff8200;
+      padding:5px;
+    }
+    .col{
+      display: none;
+    }
+
+    .on{
+
+      background-color: pink;
+    }
+    .col.show,.show{
+      display: block
+    }
+  </style>
+</head>
+<body>
+
+  <div class="btns">
+    <button id="btn1" class="on">热点</button>
+    <button id="btn2">社会</button>
+    <button id="btn3">体育</button>
+    <button id="btn4">娱乐</button>
+  </div>
+  <ul class="cotents">
+    <li class="col  show">btn1热点内容</li>
+    <li class="col">btn2社会内容</li>
+    <li class="col">btn3体育内容</li>
+    <li class="col">btn4娱乐内容</li>
+  </ul>
+
+  <script>
+    var btns=document.getElementsByTagName('button');
+    var contens=document.querySelectorAll('.col');
+    for(var i=0;i<btns.length;i++){
+      btn[i].index=1;
+      btns[i].onlick=function(){
+        console.log(this.index);
+
+        for(var j=0;j<contens.length;j++){
+          contens[j].className=contens[j].className.replace('show','');
+        }
+        contens[this.index].className='col show';
+        for(var t=0;t<btns.length;t++){
+          btns[t].className=''
+        }
+        this.className='on'
+      }
+    }
+  </script>
+</body>
+</html>

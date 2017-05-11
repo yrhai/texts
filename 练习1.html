@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box" id="box">
+    <span>我是原来有的，请不要删掉我</span>
+  </div>
+
+  <div class="test" id="test">
+    <p>我是测试innerText</p>
+  </div>
+
+  <script>
+  var box=document.getElementById('box');
+  var test=document.getElementById('test');
+  // box.innerHTML='我们是1611班';
+  // box.innerHTML='<h1>我们是1611班</h1>';
+
+  var p=document.createElement('p');
+  p.innerHTML='大家好';
+  box.appendChild(p);
+
+
+  </script>
+</body>
+</html>

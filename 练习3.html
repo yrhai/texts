@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box" class="test1 show">我是想获取设置替换类名的</div>
+
+  <script>
+  var box=document.getElementById('box');
+  // var classes=box.className;
+  // console.log(classes);
+  // console.log(typeof classes);
+  box.className='test2 hide';
+  box.className=  box.className.replace('hide','show') ;
+  // box.className=box.className.replace('hide','')
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  #test{
+    color:#ff8200;
+    line-height: 25px;
+    padding:10px;
+  }
+  .hide{
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <div id="test" class="hide" style="width:100px;height:100px;background-color:#f00;">test</div>
+
+  <script>
+    var test=document.getElementById('test');
+    var dom=document.getElementsByTagName('div');
+    console.log(dom);//[div#test.hide, test: div#test.hide]
+
+    var id1=test.id;//test
+    var id2=test['id'];//test
+    var id3=test.getAttribute('id');//test
+    console.log(id1,id2,id3);
+
+    console.log(dom[0]);
+    console.log(dom[0].style);
+    console.log(dom[0].style.backgroundColor);//rgb(255, 0, 0)
+  </script>
+</body>
+</html>

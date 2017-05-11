@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #box{
+      background: red;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id=box></div>
+  <script>
+    var oBox = document.getElementById("box");
+    oBox.onmousedown=function(evt){
+      var e =evt||event;
+      var disX=e.offsetX;
+      var disY=e.offsetY;
+
+      document.onmousemove=function(evt){
+        var e =evt||event;
+        var currentX=e.pageX-disX;
+        var currentY=e.pageY-disY;
+        oBox.style.left=currentX+"px";
+        oBox.style.top=currentY+"px";
+
+      }
+      document.onmouseup=function(){
+          document.onmouseup=null;
+          document.onmousemove=null;
+        }
+    }
+  </script>
+</body>
+</html>

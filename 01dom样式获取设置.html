@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  #test{
+    color:#ff8200;
+    line-height: 25px;
+    padding:10px;
+  }
+  .hide{
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <div id="test" class="hide" style="width:100px;height:100px;background-color:#f00;">test</div>
+
+  <script>
+  var test=document.getElementById('text');
+  var dom=document.getElementById('div');
+  console.log(dom);
+  var id1=test.id;
+  var id2=test['id'];
+
+  </script>
+</body>
+</html>
