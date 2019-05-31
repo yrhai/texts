@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>3D 动画 Three Js</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="http://canvas.migong.org/wp-content/uploads/2016/02/70.three_.min_.js"></script>
+  <script>
+    //初始化函数
+    function init() {
+
+      //创建颜色对象
+      var blue = new THREE.Color(0x7658ef);
+      var pink = new THREE.Color(0xfca4c5);
+
+      //创建场景对象
+      var scene = new THREE.Scene();
+
+      //透视投影相机对象
+      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+      //生成渲染器对象（{ alpha: true }背景色透明）
+      var renderer = new THREE.WebGLRenderer({ alpha: true });
+
+      //指定渲染器的高宽，与可视窗口大小一致
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      //将创建的canvas元素（此处的canvas元素为three.js创建）添加到文档当中
+      document.body.appendChild(renderer.domElement);
+
+      var shape = [];
+
+      //IcosahedronGeometry(radius,detail) 多面几何合体图形对象
+      geometry = new THREE.IcosahedronGeometry(2.5, 0);
+
+      //MeshNormalMaterial({ color: 0x0000ff}) 网格材料映射 RGB 颜色。
+
+      material = new THREE.MeshNormalMaterial({ color: 0x0000ff });
+
+      //Mesh(geometry,material)网格对象的基础类，第二个值是可选值
+      shape[0] = new THREE.Mesh(geometry, material);    //第一个几何体
+      shape[1] = new THREE.Mesh(geometry, material);    //第二个几何体
+      shape[2] = new THREE.Mesh(geometry, material);    //第三个几何体
+      shape[3] = new THREE.Mesh(geometry, material);
+
+      //三个几何体位置 x y z
+      shape[0].position.set(3, 5, 0);
+      shape[1].position.set(3, 5, 0);
+      shape[2].position.set(3, 5, 0);
+      shape[3].position.set(3, 5, 0);
+
+      //将三个几何体添加到场景中
+      scene.add(shape[0], shape[1], shape[2],shape[3]);
+
+      //光源点 PointLight(hex, intensity, distance, decay)
+
+      var light = new THREE.PointLight(0xfca4c5);
+
+      //光源点位置 x y z
+      light.position.set(0, 250, 0);
+
+      //将光源点添加到场景中
+      scene.add(light);
+
+      //透视投影相机位置 x y z
+      camera.position.set(3, 4, 10);
+
+      //渲染函数
+      function render() {
+        //循环渲染 render 函数
+        requestAnimationFrame(render);
+        //旋转改变几何形状的（x,y,z）位置
+        shape[0].rotation.x += 0.035;
+        shape[0].rotation.y -= 0.005;
+        shape[1].rotation.y += 0.015;
+        shape[1].rotation.z -= 0.005;
+        shape[2].rotation.z -= 0.025;
+        shape[2].rotation.x += 0.005;
+        shape[3].rotation.z -= 0.045;
+        shape[3].rotation.x += 0.005;
+        //重新加载渲染器渲染
+        renderer.render(scene, camera);
+      }
+      //执行渲染函数
+      render();
+    }
+    //执行初始化函数
+    init();
+  </script>
+</body>
+
+</html>
